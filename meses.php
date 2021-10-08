@@ -25,21 +25,20 @@
 
 
         //Al pasarle una fecha numerica especifica te devolverá el día y mes
-        function getFechaNumerica($arrayMeses, $fecha) {
+        function getFechaNumerica($fecha) {
 
-            //Ejemplo fecha: 12-02-21
+            //Ejemplo de fecha: 12-02-21
             $dia = substr($fecha,0,2);
             $mes = substr($fecha,3,2);
-            $anio = "20".substr($fecha,6,2);
+            $anio = "20".substr($fecha,6,2); //también se podría sacar el año del sistema
 
+            $arrayMeses = $this->getMeses();
 
 
             $fechaReturned = "-1 de Febrero de -1";
 
-            if(!$this->getBisiesto($anio)) {
-                //$arrayMeses = $this->modificarMes($arrayMeses);
-                $arrayMeses[2][1] = 29;
-                
+            if($this->getBisiesto($anio)) {
+                $arrayMeses[2][1] = 29; 
             }
             
 
@@ -61,16 +60,9 @@
         function getBisiesto($anio=2021) {
 
             if($anio % 4 == 0 && $anio %100 != 0 || ($anio %100 == 0 && $anio % 400 == 0)) 
-                return false;
-            return true;
+                return true;
+            return false;
 
-        }
-
-        //Modifica el mes de febrero.
-        function modificarMes($array) {
-
-            echo "Entra: ";
-            return $array[2][1] = 29;
         }
     }
 ?>

@@ -32,7 +32,7 @@
     
         $meses = new Meses();
 
-        echo "<h3>Resultado: ". $meses->getFechaNumerica($meses->getMeses(),$fecha)."</h3>";
+        echo "<h3>Resultado: ". $meses->getFechaNumerica($fecha)."</h3>";
 
 
 
